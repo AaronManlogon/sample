@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admission - Confirm</title>
+        <script type="module" src="./javascript/main.js" defer></script>
+        <script defer>
+        window.evalCaptcha = () => {
+            let cap = document.querySelector("#captcha");
+            let isEq = cap.value == document.querySelector("img#imgCaptcha").alt;
+            if (isEq) {
+                return true;
+            }
+            cap.parentNode.children[1].children[0].innerText = "Wrong Characters";
+            return false;
+        }
+        </script>
+        <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    </head>
+    <body data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="https://www.ue.edu.ph/mla/" target="_self">University of the East</a>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary-emphasis" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary-emphasis" href="#">Assessment Dates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary-emphasis" href="#">Admissions</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="container mt-2">
+                <div class="d-flex align-items-center">
+                    <ol id="bc-navigation" class="breadcrumb m-auto" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='white'/%3E%3C/svg%3E&#34;);">
+                        <li class="breadcrumb-item">
+                            Welcome
+                        </li>
+                        <li class="breadcrumb-item">
+                            Applicant
+                        </li>
+                        <li class="breadcrumb-item">
+                            Contact Info
+                        </li>
+                        <li class="breadcrumb-item">
+                            Previous School
+                        </li>
+                        <li class="breadcrumb-item active">
+                            Confirmation
+                        </li>
+                        <li class="breadcrumb-item">
+                            Submit
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <br/>
+            <form>
+                <div class="mb-3 row">
+                    <label for="txtExamDate" class="col-sm-4 control-label">Examination Date and Time:</label>
+                    <div class="col-sm-4">
+                        <input type="datetime-local" name="txtExamDate" id="txtExamDate" class="form-control" value="2025-01-15T09:00" disabled>
+                        <span class="text-danger"><em></em></span>
+                    </div>
+                </div>
+
+                <h5>Reminder:</h5>
+                <ul>
+                    <li>Examination dates will be available once your application is verified</li>
+                    <li>UE Students may already select preferred examination date and time</li>
+                    <li>Be at the Admission Office at least 30 minutes before your exam time</li>
+                    <li>Bring Mongol pencil no. 2 and the Application Confirmation printout</li>
+                </ul>
+
+                <br />
+
+                <div class="mb-3 row">
+                    <p class="col-sm-3">Anti-Spam Security: </p>
+                    <div class="col-sm-3">
+                        <img src="/captcha.png" alt="7zm2gn" id="imgCaptcha">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="captcha" class="col-sm-5 control-label">Type the characters you see above</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="captcha" id="captcha" class="form-control" value="">
+                        <span class="text-danger"><em></em></span>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row-reverse gap-2 mb-4">
+                    <a href="#" class="btn px-4 mbtn-accent" onclick="if (evalCaptcha()) next('submit.html');">Next</a>
+                    <a href="#" class="btn btn-dark px-4" onclick="back('welcome.html')">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
